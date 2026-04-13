@@ -48,3 +48,15 @@ iperf h1 h2
 
 ### 5. OpenFlow Flow Table Dump after pingall
 <img width="933" height="302" alt="image" src="https://github.com/user-attachments/assets/62a18c30-ae74-48ca-abdf-95cbf211232a" />
+
+## References
+
+1. Mininet Official Site - http://mininet.org
+2. Mininet Walkthrough - http://mininet.org/walkthrough/
+3. POX Controller Wiki - https://github.com/noxrepo/pox/wiki
+4. POX Controller Repository - https://github.com/noxrepo/pox
+5. OpenFlow Specification - https://opennetworking.org/sdn-resources/openflow/
+6. Open vSwitch Documentation - https://www.openvswitch.org/
+7. Software Defined Networking (SDN) Overview - https://opennetworking.org/sdn-definition/
+8. Mininet GitHub Repository - https://github.com/mininet/mininet
+9. Mininet Installation Guide - https://github.com/mininet/mininet/blob/master/INSTALL
