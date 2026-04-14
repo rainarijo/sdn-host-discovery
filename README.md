@@ -60,6 +60,20 @@ Blocked Case:
 ### 5. OpenFlow Flow Table Dump after pingall
 <img width="933" height="302" alt="image" src="https://github.com/user-attachments/assets/62a18c30-ae74-48ca-abdf-95cbf211232a" />
 
+## 6. Expected Output
+- POX controller logs [HOST JOIN] for each host detected
+- Host database shows MAC, IP, Switch, Port for all 3 hosts
+- pingall shows 0% packet loss (6/6 received)
+- h1 ping h2 shows 0% loss with avg latency ~1ms
+- iperf shows throughput of ~37.5 Gbits/sec
+- Flow table shows installed rules with idle_timeout=30, hard_timeout=60
+
+## 7. Design Choices
+- Single switch topology with 3 hosts chosen for simplicity
+- POX controller used over Ryu due to Python 3.10 compatibility
+- OpenFlow 1.0 used as supported by POX
+- idle_timeout=30, hard_timeout=60 chosen to balance flow table size and performance
+
 ## References
 
 1. Mininet Official Site - http://mininet.org
