@@ -26,17 +26,58 @@ python3 pox.py host_discovery
 sudo mn --topo single,3 --controller remote
 ```
 
-**Step 5 - Run tests in Mininet CLI:**
+**Step 5 - Run basic tests in Mininet CLI:**
 ```bash
 pingall
 h1 ping h2 -c 5
 iperf h1 h2
 ```
+
+**Step 6 - Dump OpenFlow Flow Table (Terminal 3):**
+
+Run this immediately after `pingall` in Terminal 2:
+```bash
+sudo ovs-ofctl dump-flows s1
+```
+
+**Step 7 - Failure & Recovery Demo (Terminal 2):**
+
+Simulate link failure:
+```bash
+link s1 h2 down
+pingall
+```
+
+Restore the link:
+```bash
+link s1 h2 up
+pingall
+```
+
+**Step 8 - Allowed & Blocked Case Demo (Terminal 2):**
+
+Allowed case (link up):
+```bash
+h1 ping h2 -c 3
+```
+
+Blocked case (link down):
+```bash
+link s1 h2 down
+h1 ping h2 -c 3
+```
+
+Restore:
+```bash
+link s1 h2 up
+```
+
 ## Proof of Execution
 
 ### 1. Mininet Topology Creation and Full Network Connectivity Test
 Normal case:
 <img width="666" height="495" alt="image" src="https://github.com/user-attachments/assets/ff1f5b9c-2425-4854-bb52-a6ad64befa32" />
+
 Failure case:
 <img width="202" height="145" alt="image" src="https://github.com/user-attachments/assets/ca70053b-54a8-408a-af2e-c3736ef8e404" />
 
@@ -45,8 +86,6 @@ Allowed Case:
 
 Blocked Case:
 <img width="331" height="70" alt="image" src="https://github.com/user-attachments/assets/24544e2d-946e-441b-a03c-8ed7f89addb5" />
-
-
 
 ### 2. Individual Host Communication - h1 to h2 Ping Test
 <img width="742" height="307" alt="image" src="https://github.com/user-attachments/assets/ccfa2f79-6dd8-4caf-af97-2d72e5e2e288" />
